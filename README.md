@@ -148,14 +148,13 @@ ____
 
 We first planned on paper to outline what the function of the app would be, and how it would run based on the set of questions we wanted to asked.
 
+![alt text](plan1.jpg)
 
-![alt text](https://imgur.com/8u7csKw)
+![alt text](plan2.jpg)
 
-![alt text](https://imgur.com/z0MRMU8)
+![alt text](plan3.jpg)
 
-![alt text](https://imgur.com/wDSWGEM)
-
-![alt text](https://imgur.com/DBurLFk)
+![alt text](plan4.jpg)
 
 ### Timeline
 
