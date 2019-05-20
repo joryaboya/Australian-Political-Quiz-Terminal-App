@@ -1,4 +1,4 @@
-
+require 'colorize'
 class Database
     attr_accessor(:enviromentalist, :capitalist, :humanitarian, :authoratarian, :abortion, :asylum, :death_penalty, :director_quotas, :drug_testing, :euthanasia, :monarchy, :nuclear_energy, :parental_leave, :same_sex_marriage, :ssc, :vaccines)
     @@instantces = 0
@@ -26,7 +26,6 @@ class Database
         @ssc = 3
         @vaccines = 3
         @@instantces += 1
-        @party = [
     liberal = {
         enviromentalist: -4 + 9,
         capitalist: 4 + 9,
@@ -166,7 +165,7 @@ class Database
 
         1 - Run Quiz
         2 - View users answers
-        3 - Quit Game"
+        3 - Quit Game".colorize(:cyan)
         input = gets().strip.to_i
         if(input == 1)
             quiz_menu
@@ -182,11 +181,11 @@ class Database
         
     def quiz_menu
         puts "
-        ____________________________________________________________________________________________________________________________
-        Welcome to the Political Profiler, a quiz that compares YOUR answers to the three major political parties!
+        ____________________________________________________________________________________________________________________________".colorize(:cyan)
+        puts" Welcome to the Political Profiler, a quiz that compares YOUR answers to the three major political parties!
 
 
-        In this quiz, you will be asked how much you agree with a political statement by entering and integer between 1 and 5.
+        In this quiz, you will be asked how much you agree with a political statement by entering an integer between 1 and 5.
 
         1: Strongly Disagree
         2: Disagree
@@ -196,7 +195,7 @@ class Database
         
         You will be asked 24 questions for accuracy. Please answer honestly.
 
-        Type your name and press ENTER to continue."
+        Type your name and press ENTER to continue.".colorize(:cyan).each_char {|c| putc c ; sleep 0.02; $stdout.flush} 
         name = gets().strip
         user1 = Database.new(name)
     end
@@ -220,7 +219,7 @@ class Database
     def question1_env_cap 
         puts "
         1. The free market is more important than sustaining the environment
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_cap = (input - 3)
         input_env = (-input_cap)
@@ -230,7 +229,7 @@ class Database
     def question1_aut_hum
         puts "
         2. Punishing the unlawful is more important than supporting the citizens
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_aut = input - 3
         input_hum = -input_aut
@@ -240,7 +239,7 @@ class Database
     def question1_aut_cap
         puts "
         3. Leniance on criminals is a valid sacrifice for the growth of the economy
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_aut = input - 3 
         input_cap = -input_aut
@@ -250,7 +249,7 @@ class Database
     def question1_env_hum
         puts "
         4. Neglecting the environmental impact of programs is justified if it improves the lives of the people
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_hum = input - 3
         input_env = -input_hum
@@ -263,58 +262,66 @@ class Database
     def question2_env1
         puts "
         5. The goverment should allow sale of agriland to foreign buyers at the expense of the enviroment.
-        "
+        ".colorize(:cyan)
         input = input_check_int
-        input_env = -(input - 3)
+        input_env = input - 3
+        @enviromentalist += input_env
     end
     def question2_cap1
         puts "
         6. Sunday pay should stay at double wages.
-        "
+        ".colorize(:light_blue)
         input = input_check_int
-        input_cap = -(input - 3)
+        input_cap = input - 3
+        @capitalist += input_cap
     end
     def question2_hum1
         puts "
         7. The government should increase foreign aid
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_hum = input - 3
+        @humanitarian += input_hum
     end
     def question2_aut1
         puts "
         8. Citizens should lose their citizenship if they join a terrorist group
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_aut = input - 3
+        @authoritarian += input_aut
     end
     def question2_env2
         puts "
         9. Disposible, non-biodegradable products should be banned.
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_env = input - 3
+        @enviromentalist += input_env
     end
     def question2_cap2
         puts "
         10. Tax rates for all buisnesses should be lowered.
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_cap = input - 3
+        @capitalist += input_cap
     end
     def question2_hum2
         puts "
         11. There should be less restrictions on welfare benifits.
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_hum = input - 3
+        @humanitarian += input_hum
     end
     def question2_aut2
         puts "
         12. The government should regulate social media.
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_aut = input - 3
+        @authoritarian += input_aut
     end
 
 # the remaining question methods only alter the attribute specific to that question
@@ -322,7 +329,7 @@ class Database
     def question3_env1
         puts "
         13. Abortion should be legal
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_abo = input - 3
         @abortion += input_abo
@@ -331,7 +338,7 @@ class Database
     def question3_cap1
         puts "
         14. Parental leave payments should be based on the parents wage
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_par = input - 3 
         @parental_leave += input_par
@@ -339,7 +346,7 @@ class Database
     def question3_hum1
         puts "
         15. Same sex marriage should be legal
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_marriage = input - 3
         @same_sex_marriage += input_marriage
@@ -347,7 +354,7 @@ class Database
     def question3_aut1
         puts "
         16. The death penalty should be legal
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_death = input - 3
         @death_penalty += input_death
@@ -355,7 +362,7 @@ class Database
     def question3_env2
         puts "
         17. Government should require children to be vaccinated for preventable diseases
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_vac = input - 3 
         @vaccines += input_vac
@@ -363,7 +370,7 @@ class Database
     def question3_cap2
         puts "
         18. The government should fund the Safe Schools Coalition
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_ssc = input - 3
         @ssc += input_ssc
@@ -372,7 +379,7 @@ class Database
     def question3_hum2
         puts "
         19. Euthanasia should be legal
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_euth = input - 3
         @euthanasia += input_euth
@@ -381,7 +388,7 @@ class Database
     def question3_aut2
         puts "
         20. Drug testing should be legal at festivals
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_drugs = input - 3
         @drug_testing +=input_drugs
@@ -392,7 +399,7 @@ class Database
     def question4_env
         puts "
         21. Nuclear energy should be further implemented in Australia
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_nuclear = input - 3
         @nuclear_energy += input_nuclear
@@ -400,7 +407,7 @@ class Database
     def question4_cap
         puts "
         22. Businesses should be required to have women on board of directors
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_quota = input - 3
         @director_quotas += input_quota
@@ -408,7 +415,7 @@ class Database
     def question4_hum
         puts "
         23. Australia should accept immigrants from asylum seeking boats
-        "
+        ".colorize(:cyan)
         input = input_check_int
         input_asylum = input - 3 
         @asylum += input_asylum
@@ -416,7 +423,7 @@ class Database
     def question4_aut
         puts "
         24. Australia should end the monarchy and become a republic 
-        "
+        ".colorize(:light_blue)
         input = input_check_int
         input_monarchy = input -3 
         @monarchy += input_monarchy
@@ -1078,9 +1085,9 @@ class Database
 
     def compare_overall()
         compare = {}
-        compare.merge!(LIBERAL: "Your responses are #{percent_dif_lib.round(2)}% similar to liberal party")
-        compare.merge!(LABOR: "Your responses are #{percent_dif_lab.round(2)}% similar to labor party")
-        compare.merge!(GREENS: "Your responses are #{percent_dif_gre.round(2)}% similar to greens party")
+        compare.merge!(LIBERAL: "Your responses are #{percent_dif_lib.round(2)}% similar to liberal party".colorize(:blue))
+        compare.merge!(LABOR: "Your responses are #{percent_dif_lab.round(2)}% similar to labor party".colorize(:red))
+        compare.merge!(GREENS: "Your responses are #{percent_dif_gre.round(2)}% similar to greens party".colorize(:green))
         compare = compare.sort_by {|k,v| v}.reverse
     end
 
@@ -1097,21 +1104,21 @@ class Database
             2. Yes, I would like my topics results!
             
             3. No I would like to exit
-            "
+            ".colorize(:cyan)
             input = gets.strip.to_i
                 if(input == 1)
                     compare_v = {}
-                    compare_v.merge!(LIBERAL: "Your responses are #{(percent_dif_lib_values*100).round(2)}% similar to liberal values")
-                    compare_v.merge!(LABOR: "Your responses are #{(percent_dif_lab_values*100).round(2)}% similar to labor values")
-                    compare_v.merge!(GREENS: "Your responses are #{(percent_dif_gre_values*100).round(2)}% similar to greens values")
+                    compare_v.merge!(LIBERAL: "Your responses are #{(percent_dif_lib_values*100).round(2)}% similar to liberal values".colorize(:blue))
+                    compare_v.merge!(LABOR: "Your responses are #{(percent_dif_lab_values*100).round(2)}% similar to labor values".colorize(:red))
+                    compare_v.merge!(GREENS: "Your responses are #{(percent_dif_gre_values*100).round(2)}% similar to greens values".colorize(:green))
                     output = compare_v.sort_by {|k,v| v}.reverse
                     puts output
                 
                 elsif (input == 2)
                     compare_t = {}
-                    compare_t.merge!(LIBERAL: "Your topic responses are #{(percent_dif_lib_topics*100).round(2)}% similar to liberal")
-                    compare_t.merge!(LABOR: "Your topic responses are #{(percent_dif_lab_topics*100).round(2)}% similar to labor")
-                    compare_t.merge!(GREENS: "Your topic responses are #{(percent_dif_gre_topics*100).round(2)}% similar to greens")
+                    compare_t.merge!(LIBERAL: "Your topic responses are #{(percent_dif_lib_topics*100).round(2)}% similar to liberal".colorize(:blue))
+                    compare_t.merge!(LABOR: "Your topic responses are #{(percent_dif_lab_topics*100).round(2)}% similar to labor".colorize(:red))
+                    compare_t.merge!(GREENS: "Your topic responses are #{(percent_dif_gre_topics*100).round(2)}% similar to greens".colorize(:green))
                     output = compare_t.sort_by {|k,v| v}.reverse
                     puts output
                 elsif (input == 3)
